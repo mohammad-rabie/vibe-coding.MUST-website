@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact MUST - Misr University for Science & Technology</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="https://must.edu.eg/wp-content/uploads/2019/11/png-must-1-150x150.png" alt="MUST University Logo" class="logo-img">
+                <span class="logo-text">MUST</span>
+            </a>
+        </div>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="old-exams.html">Old Exams</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-header">
+            <h1>Contact Us</h1>
+            <p class="subtitle">We're here to help and answer any questions you might have</p>
+        </section>
+
+        <section class="contact-grid">
+            <div class="contact-card animate-on-scroll">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p>Get in touch via email</p>
+                <a href="mailto:mohamedrabie9020@gmail.com" class="contact-link">mohamedrabie9020@gmail.com</a>
+            </div>
+
+            <div class="contact-card animate-on-scroll">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Visit Us</h3>
+                <p>Our campus location</p>
+                <a href="https://maps.app.goo.gl/AP79ot6geyccCDNm6" target="_blank" class="contact-link">View on Map</a>
+            </div>
+
+            <div class="contact-card animate-on-scroll">
+                <i class="fab fa-whatsapp"></i>
+                <h3>WhatsApp</h3>
+                <p>Chat with us instantly</p>
+                <a href="https://wa.me/201110953439" target="_blank" class="contact-link">+20 111 095 3439</a>
+            </div>
+        </section>
+
+        <section class="contact-form-section">
+            <div class="form-container animate-on-scroll">
+                <h2>Send us a Message</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <div class="input-group">
+                            <i class="fas fa-tag"></i>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="admission">Admission</option>
+                                <option value="academic">Academic</option>
+                                <option value="technical">Technical Support</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <div class="input-group">
+                            <i class="fas fa-comment-alt"></i>
+                            <textarea id="message" name="message" required placeholder="Type your message here"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <section class="social-connect">
+            <h2>Connect With Us</h2>
+            <div class="social-links">
+                <a href="https://www.facebook.com/mohamedrabieee99" target="_blank" class="social-link animate-on-scroll">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.linkedin.com/school/must-university/" target="_blank" class="social-link animate-on-scroll">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://twitter.com/MUST_University" target="_blank" class="social-link animate-on-scroll">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="https://www.instagram.com/must_university/" target="_blank" class="social-link animate-on-scroll">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

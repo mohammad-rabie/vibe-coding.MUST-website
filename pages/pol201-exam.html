@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="POL 201 Old Examination Papers - MUST">
+    <title>POL 201 - Old Exam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Add PDF.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
+    <!-- Add image viewer library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.2/viewer.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.10.2/viewer.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="https://yt3.ggpht.com/ytc/AMLnZu9J-lE7q_tp7Q_i6kQeg31Z1kMZL_VysB4yS1GE7w=s900-c-k-c0x00ffffff-no-rj" alt="MUST Logo" class="logo-img">
+                <span class="logo-text">MUST</span>
+            </a>
+        </div>
+        <nav class="nav">
+            <button class="nav-toggle" aria-label="toggle navigation">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-list">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="old-exams.html">Old Exams</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="page-hero-content">
+                <h1>POL 201 - Political Science</h1>
+                <p>Previous Examination Paper with Online Viewer</p>
+            </div>
+        </section>
+
+        <section class="exam-viewer-section">
+            <div class="exam-container">
+                <div class="exam-controls">
+                    <div class="control-buttons">
+                        <button id="zoomIn" class="btn btn-icon"><i class="fas fa-search-plus"></i> Zoom In</button>
+                        <button id="zoomOut" class="btn btn-icon"><i class="fas fa-search-minus"></i> Zoom Out</button>
+                        <button id="rotateLeft" class="btn btn-icon"><i class="fas fa-undo"></i> Rotate Left</button>
+                        <button id="rotateRight" class="btn btn-icon"><i class="fas fa-redo"></i> Rotate Right</button>
+                        <button id="download" class="btn btn-primary"><i class="fas fa-download"></i> Download</button>
+                    </div>
+                    <div class="page-navigation">
+                        <button id="prevPage" class="btn btn-icon"><i class="fas fa-chevron-left"></i> Previous</button>
+                        <span id="pageInfo">Page <span id="currentPage">1</span> of <span id="totalPages">2</span></span>
+                        <button id="nextPage" class="btn btn-icon">Next <i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="exam-viewer">
+                    <div class="images-container">
+                        <img src="https://i.ibb.co/zmbbBwz/IMG-20240925-195711.jpg" alt="POL 201 Exam Page 1" class="exam-image">
+                        <img src="https://i.ibb.co/GM98SPD/IMG-20240925-195718.jpg" alt="POL 201 Exam Page 2" class="exam-image">
+                    </div>
+                </div>
+
+                <div class="annotation-tools">
+                    <div class="tool-buttons">
+                        <button id="penTool" class="btn btn-icon active"><i class="fas fa-pen"></i> Pen</button>
+                        <button id="highlighterTool" class="btn btn-icon"><i class="fas fa-highlighter"></i> Highlighter</button>
+                        <button id="eraserTool" class="btn btn-icon"><i class="fas fa-eraser"></i> Eraser</button>
+                        <button id="clearAll" class="btn btn-secondary"><i class="fas fa-trash"></i> Clear All</button>
+                    </div>
+                    <div class="color-picker">
+                        <label>Color:</label>
+                        <input type="color" id="colorPicker" value="#000000">
+                        <label>Size:</label>
+                        <input type="range" id="sizeSlider" min="1" max="20" value="2">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com/mohamedrabieee99" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/201110953439" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2025 Misr University for Science & Technology. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Viewer.js
+        const viewer = new Viewer(document.querySelector('.images-container'), {
+            inline: true,
+            viewed() {
+                viewer.zoomTo(1.0);
+            },
+        });
+
+        // Page navigation
+        let currentPage = 1;
+        const totalPages = 2;
+        const images = document.querySelectorAll('.exam-image');
+
+        document.getElementById('prevPage').addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                updatePage();
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePage();
+            }
+        });
+
+        function updatePage() {
+            document.getElementById('currentPage').textContent = currentPage;
+            images.forEach((img, index) => {
+                img.style.display = index + 1 === currentPage ? 'block' : 'none';
+            });
+        }
+
+        // Initialize canvas for annotations
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        let isDrawing = false;
+        let currentTool = 'pen';
+        let currentColor = '#000000';
+        let currentSize = 2;
+
+        // Tool selection
+        document.getElementById('penTool').addEventListener('click', () => setTool('pen'));
+        document.getElementById('highlighterTool').addEventListener('click', () => setTool('highlighter'));
+        document.getElementById('eraserTool').addEventListener('click', () => setTool('eraser'));
+        document.getElementById('clearAll').addEventListener('click', clearCanvas);
+
+        // Color and size controls
+        document.getElementById('colorPicker').addEventListener('input', (e) => {
+            currentColor = e.target.value;
+        });
+
+        document.getElementById('sizeSlider').addEventListener('input', (e) => {
+            currentSize = e.target.value;
+        });
+
+        function setTool(tool) {
+            currentTool = tool;
+            document.querySelectorAll('.tool-buttons .btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tool + 'Tool').classList.add('active');
+        }
+
+        // Download functionality
+        document.getElementById('download').addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.download = `POL201_Exam_Page${currentPage}.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+
+        // Initialize the page
+        updatePage();
+    </script>
+</body>
+</html>
